@@ -1,0 +1,364 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="toolbarStyle">@style/CustomerToolbarStyle</item>
+
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <!--全屏-->
+    <style name="FullScreenTheme" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <!--全屏加透明-->
+    <style name="TranslucentFullScreenTheme" parent="FullScreenTheme">
+        <item name="android:windowBackground">@color/albumTransparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="CustomerToolbarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="contentInsetStart">0dp</item>
+        <item name="elevation">0dp</item>
+        <item name="titleMarginTop">0dp</item>
+    </style>
+
+    <style name="Custom_Progress" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <!-- 防止欢迎页白屏或者黑屏，设置图片 -->
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/layout_list_start_pic</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+    <!-- 用于导航栏标题，详情页标题等 -->
+    <style name="TextNavbar">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+    <!-- 用于列表标题、列表内文字、按钮文字。 -->
+    <style name="TextTitle">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+
+    <style name="TextTitle666">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/color_666666</item>
+    </style>
+    <!-- 用于列表标题，列表内文字。 -->
+    <style name="TextContent">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+    <!-- 用于提示信息、数据描述、警示文字、错误提示。 -->
+    <style name="TextMessage">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+
+    <style name="TextMessage666">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/color_666666</item>
+    </style>
+    <!-- 底部菜单栏文字，极少部分的备注信息 -->
+    <style name="TextRemark">
+        <item name="android:textSize">11dp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+    <!--弹窗提示文字 -->
+    <style name="Text_FF9800_16">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/color_FF9800</item>
+    </style>
+
+    <style name="Text_333_16">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+
+    <style name="Text_333_15">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+
+    <style name="Text_333_14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+
+    <style name="Text_333_13">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+
+    <style name="Text_333_10">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+
+    <style name="Text_FF4646_18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/color_FF4646</item>
+    </style>
+
+    <style name="Text_58526d_10">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/color_58526d</item>
+    </style>
+
+    <style name="Text_333_18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+
+    <style name="Text_333_17">
+        <item name="android:textSize">17dp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+
+    <style name="Text_000_16">
+        <item name="android:textColor">@color/color_000000</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text_000_15">
+        <item name="android:textColor">@color/color_000000</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Text_888_15">
+        <item name="android:textColor">@color/color_888888</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Text_888_12">
+        <item name="android:textColor">@color/color_888888</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Text_888_14">
+        <item name="android:textColor">@color/color_888888</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text_999_12">
+        <item name="android:textColor">@color/color_999999</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Text_999_11">
+        <item name="android:textColor">@color/color_999999</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="Text_999_14">
+        <item name="android:textColor">@color/color_999999</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text_999_16">
+        <item name="android:textColor">@color/color_999999</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text_666_12">
+        <item name="android:textColor">@color/color_666666</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Text_666_11">
+        <item name="android:textColor">@color/color_666666</item>
+        <item name="android:textSize">11dp</item>
+    </style>
+
+    <style name="Text_666_16">
+        <item name="android:textColor">@color/color_666666</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text_666_14">
+        <item name="android:textColor">@color/color_666666</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text_666_13">
+        <item name="android:textColor">@color/color_666666</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="Text_fff_10">
+        <item name="android:textColor">@color/color_ffffff</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="Text_fff_12">
+        <item name="android:textColor">@color/color_ffffff</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Text_fff_16">
+        <item name="android:textColor">@color/color_ffffff</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text_ff6600_10">
+        <item name="android:textColor">@color/color_FF6600</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="Text_FF333C_16">
+        <item name="android:textColor">@color/color_FF333C</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text_FF333C_14">
+        <item name="android:textColor">@color/color_FF333C</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text_348BED_15">
+        <item name="android:textColor">@color/color_348bed</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <!---报修记录状态样式-->
+    <style name="record_type">
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+    </style>
+
+    <!-- *****************  按钮  ************************！-->
+
+
+
+    <!--分割线 高度 0.5   颜色  e5e5e5-->
+    <style name="divider_e5e5e5_half_1">
+        <item name="android:layout_height">@dimen/dp_1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/color_E5E5E5</item>
+    </style>
+    <!--分割线 高度 0.5   颜色  e5e5e5-->
+    <style name="divider_dcdcdc_half_1">
+        <item name="android:layout_height">@dimen/dp_1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/color_dcdcdc</item>
+    </style>
+    <!--分割线 宽度 0.5   颜色  e5e5e5-->
+    <style name="divider_vertical_e5e5e5_half_1">
+        <item name="android:layout_width">@dimen/dp_1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/color_E5E5E5</item>
+    </style>
+    <!--分割线 高度 0.5   颜色  e5e5e5-->
+    <style name="divider_e5e5e5_10">
+        <item name="android:layout_height">@dimen/dp_10</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/color_E5E5E5</item>
+    </style>
+    <!--分割线 高度 0.5   颜色  fafafa-->
+    <style name="divider_fafafa_10">
+        <item name="android:layout_height">@dimen/dp_10</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/color_fafafa</item>
+    </style>
+    <!-- 带删除按钮的文本输入框 -->
+    <style name="clear_editText_userName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">@dimen/dp_16</item>
+        <item name="android:paddingRight">@dimen/dp_22</item>
+        <item name="android:drawableRight">@mipmap/emotionstore_progresscancelbtn</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@null</item>
+    </style>
+    <!-- 带删除按钮的文本输入框 -->
+    <style name="introduce_editText_userName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">@dimen/dp_16</item>
+        <item name="android:paddingRight">@dimen/dp_22</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <!-- 导航栏背景-->
+    <style name="NavbarBackground">
+        <item name="android:background">@color/color_FF9800</item>
+    </style>
+    <!--导航栏标题-->
+
+    <style name="NavbarTextTitle">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/color_ffffff</item>
+    </style>
+    <!--导航栏无背景按钮-->
+    <style name="NavbarTextLeft">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/color_ffffff</item>
+    </style>
+
+    <style name="NavbarTextRight">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/color_ffffff</item>
+    </style>
+
+
+
+
+
+    <declare-styleable name="AutoNextInputView">
+
+        <attr name="maxCount" format="integer" />
+        <attr name="circleColor" format="color" />
+        <attr name="bottomLineColor" format="color" />
+        <attr name="radius" format="dimension" />
+        <attr name="divideLineWidth" format="dimension" />
+        <attr name="divideLineColor" format="color" />
+        <attr name="rectAngle" format="dimension" />
+        <attr name="focusedColor" format="color" />
+        <attr name="psdType" format="enum">
+            <enum name="weChat" value="0" />
+            <enum name="bottomLine" value="1" />
+        </attr>
+    </declare-styleable>
+
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">@dimen/dp_17</item>
+    </style>
+
+    <style name="StyleDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 模糊 -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+</resources>

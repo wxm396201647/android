@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/ll_refresh"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_70"
+    >
+    <ImageView
+        android:id="@+id/iv_refresh"
+        android:layout_width="@dimen/dp_24"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_24"
+        android:layout_height="@dimen/dp_24"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:background="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/tv_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/iv_refresh"
+        android:textSize="@dimen/dp_11"
+        />
+
+
+</RelativeLayout>
