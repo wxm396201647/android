@@ -17,9 +17,9 @@ android {
     }
     signingConfigs {
         releaseConfig {
-            keyAlias 'jyall'
+            keyAlias 'thanatos'
             keyPassword '123456'
-            storeFile file('jyall.keystore')
+            storeFile file('thanatos.keystore')
             storePassword '123456'
             v2SigningEnabled false
         }

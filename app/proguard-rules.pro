@@ -140,8 +140,12 @@
 -dontwarn org.apache.**
 
 #okhttp3.x
--dontwarn com.squareup.okhttp3.**
--keep class com.squareup.okhttp3.** { *;}
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+-dontwarn okhttp3.**
+
+-keep class okio.** { *; }
+-keep interface okio.** { *; }
 -dontwarn okio.**
 #sharesdk
 -keep class cn.sharesdk.**{*;}
