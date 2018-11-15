@@ -10,8 +10,6 @@ import retrofit2.Response
 abstract class CommonObserver<T> : Observer<Response<T>> {
     var disposable:Disposable? = null
 
-    constructor()
-
     override fun onComplete() {
 
     }
@@ -79,11 +77,11 @@ abstract class CommonObserver<T> : Observer<Response<T>> {
 
     fun processCode( errorResponseBean: BaseBean<Any>): Boolean {
         when (errorResponseBean.code) {
-            ResponseCode.ACCESS_TOKEN_INVALID -> LogUtils.e(errorResponseBean.message)//TODO
-            ResponseCode.UPDATE_FORCE -> LogUtils.e(errorResponseBean.message)//TODO
-            ResponseCode.TICKET_UNAVALIBLE2 -> LogUtils.e(errorResponseBean.message)//TODO
-            ResponseCode.TICKET_UNAVALIBLE3 -> LogUtils.e(errorResponseBean.message)//TODO
-            ResponseCode.TOKEN_EMPTY -> LogUtils.e(errorResponseBean.message) //TODO
+            ResponseCode.ACCESS_TOKEN_INVALID -> LogUtils.e(errorResponseBean.message)
+            ResponseCode.UPDATE_FORCE -> LogUtils.e(errorResponseBean.message)
+            ResponseCode.TICKET_UNAVALIBLE2 -> LogUtils.e(errorResponseBean.message)
+            ResponseCode.TICKET_UNAVALIBLE3 -> LogUtils.e(errorResponseBean.message)
+            ResponseCode.TOKEN_EMPTY -> LogUtils.e(errorResponseBean.message) 
             ResponseCode.LOGIN_DUPLICATE , ResponseCode.TICKET_UNAVALIBLE -> {
 
 //                BaseContext.instance.logout()

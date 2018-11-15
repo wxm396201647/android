@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.support.multidex.MultiDex
 import com.scwang.smartrefresh.layout.SmartRefreshLayout.*
+import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator
 import com.thanatos.app.R
 
 import com.thanatos.app.view.CommonRefreshHeader
@@ -22,7 +23,7 @@ class BaseContext : Application() {
             return@DefaultRefreshHeaderCreator CommonRefreshHeader(context)
         })
         //设置全局的Footer构建器
-        setDefaultRefreshFooterCreater { context, _ -> ClassicsFooter(context).setDrawableSize(20f) }
+        setDefaultRefreshFooterCreator { context, _ -> ClassicsFooter(context).setDrawableSize(20f) }
     }
 
      private var userInfo: UserBean? = null

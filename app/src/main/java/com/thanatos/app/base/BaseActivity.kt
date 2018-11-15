@@ -9,7 +9,6 @@ import com.thanatos.app.R
 import com.thanatos.app.utils.EmptyLayoutEnum
 import com.thanatos.app.utils.StatusBarUtil
 import com.thanatos.app.view.CustomProgressDialog
-import com.umeng.analytics.MobclickAgent
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -141,15 +140,5 @@ abstract class BaseActivity<T : IBaseView, K : BasePresenter<T>> : AppCompatActi
             EmptyLayoutEnum.SHOW_EMPTY -> showEmptyView()
         }
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-        MobclickAgent.onResume(this)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        MobclickAgent.onPause(this)
     }
 }
