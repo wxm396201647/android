@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.beltaief.flowlayout.FlowLayout
 import com.blankj.utilcode.util.KeyboardUtils
-import com.thanatos.app.R
 import com.thanatos.app.utils.EmptyLayoutEnum
 import com.thanatos.app.utils.StatusBarUtil
 import com.thanatos.app.view.CustomProgressDialog

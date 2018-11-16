@@ -1,17 +1,34 @@
 package com.thanatos.app.extension
 
 import android.app.Activity
+import android.app.Fragment
 import android.content.Context
 import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.thanatos.app.R
+import com.thanatos.imageloader.ImageLoader
 
 import java.text.SimpleDateFormat
 import java.util.*
 
+fun Fragment.displayImage(url: String, imageView: ImageView) {
+    ImageLoader.getInstance().displayImage(this.activity, url, imageView)
+}
 
+fun Activity.displayImage(url: String, imageView: ImageView) {
+    ImageLoader.getInstance().displayImage(this, url, imageView)
+}
+
+fun ImageView.displayImage(context: Context, url: String) {
+    ImageLoader.getInstance().displayImage(context, url, this)
+}
+
+fun ImageView.displayRoundImage(context: Context, url: String, def: Int = 0, radius: Int = 5) {
+    ImageLoader.getInstance().displayRoundImage(context, url, this, def, radius)
+}
 
 fun Context.toast(resId: Int, duration: Int = Toast.LENGTH_SHORT) =
         Toast.makeText(this, resId, duration).show()
