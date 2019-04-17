@@ -21,7 +21,6 @@ object CommonHeaders {
         sCommonHeaders!!["APPkey"] = APIAddressConstants.APP_KEY //应用名称
         sCommonHeaders!!["lon"] = "0"//该版本默认0
         sCommonHeaders!!["lat"] = "0" //该版本默认0
-        sCommonHeaders!!["cityId"] = "0"//该版本默认0
         sCommonHeaders!!["deviceresolution"] = ScreenUtils.getScreenWidth().toString() + "x" + ScreenUtils.getScreenHeight()//分辨率
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 }
 

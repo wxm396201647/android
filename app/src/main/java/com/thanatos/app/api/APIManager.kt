@@ -35,7 +35,6 @@ object APIManager {
                             .build()
                 }
             }
-
         }
         return retrofit
     }

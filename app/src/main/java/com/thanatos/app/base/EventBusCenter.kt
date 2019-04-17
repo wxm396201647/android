@@ -23,6 +23,4 @@ class EventBusCenter<T> {
         this.evenCode = eventCode
         this.data = data
     }
-
-
 }
