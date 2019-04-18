@@ -21,9 +21,6 @@ class ProgressResponseBody(val imageUrl: String, val responseBody: ResponseBody,
     }
 
     override fun source(): BufferedSource {
-        if (bufferedSource == null) {
-            bufferedSource = Okio.buffer(source(responseBody.source()))
-        }
         return bufferedSource
     }
 

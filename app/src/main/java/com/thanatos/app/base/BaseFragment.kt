@@ -1,8 +1,8 @@
 package com.thanatos.app.base
 
 import android.os.Bundle
-import android.support.annotation.LayoutRes
-import android.support.v4.app.Fragment
+import androidx.annotation.LayoutRes
+import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +22,7 @@ import pub.devrel.easypermissions.EasyPermissions
 import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
 
-abstract class BaseFragment<T : IBaseView, K : BasePresenter<T>> : Fragment(), IBaseView, EasyPermissions.PermissionCallbacks {
+abstract class BaseFragment<T : IBaseView, K : BasePresenter<T>> : androidx.fragment.app.Fragment(), IBaseView, EasyPermissions.PermissionCallbacks {
 
     /**
      * BasePresenter<T>类型 K 用于attachView 、detachView 统一处理

@@ -3,7 +3,7 @@ package com.thanatos.app.base
 import android.app.Application
 import android.content.Context
 import android.content.pm.ApplicationInfo
-import android.support.multidex.MultiDex
+import androidx.multidex.MultiDex
 import com.scwang.smartrefresh.layout.SmartRefreshLayout.*
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator
 import com.thanatos.app.R

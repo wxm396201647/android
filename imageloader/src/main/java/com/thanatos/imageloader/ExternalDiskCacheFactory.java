@@ -1,7 +1,7 @@
 package com.thanatos.imageloader;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.bumptech.glide.load.engine.cache.DiskCache;
 

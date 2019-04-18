@@ -1,7 +1,6 @@
 package com.thanatos.app.extension
 
 import android.app.Activity
-import android.app.Fragment
 import android.content.Context
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -9,6 +8,7 @@ import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.thanatos.app.R
 import com.thanatos.imageloader.ImageLoader
 
@@ -55,7 +55,7 @@ fun Activity.rotateAnimation(isRotate: Boolean, view: TextView, text: String) {
 fun String.formateDate(timeMillis: Long?, format: String = "yyyy-MM-dd HH:mm:ss"): String {
     return if (null != timeMillis) {
         try {
-            var date = Date(timeMillis)
+            val date = Date(timeMillis)
             val sdf = SimpleDateFormat(format, Locale.CHINA)
             sdf.format(date)
         } catch (e: Exception) {
@@ -69,7 +69,7 @@ fun String.formateDate(timeMillis: Long?, format: String = "yyyy-MM-dd HH:mm:ss"
 fun String.formateDate(timeMillis: String?, format: String = "yyyy-MM-dd HH:mm:ss"): String {
     return if (null != timeMillis) {
         try {
-            var date = Date(timeMillis.toLong())
+            val date = Date(timeMillis.toLong())
             val sdf = SimpleDateFormat(format, Locale.CHINA)
             sdf.format(date)
         } catch (e: Exception) {
@@ -112,10 +112,10 @@ fun durationFormat(duration: Long?): String {
  * 数据流量格式化
  */
 fun Context.dataFormat(total: Long): String {
-    var result: String
-    var speedReal: Int = (total / (1024)).toInt()
+    val result: String
+    val speedReal: Int = (total / (1024)).toInt()
     result = if (speedReal < 512) {
-        speedReal.toString() + " KB"
+        "$speedReal KB"
     } else {
         val mSpeed = speedReal / 1024.0
         (Math.round(mSpeed * 100) / 100.0).toString() + " MB"

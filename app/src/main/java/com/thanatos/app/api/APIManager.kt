@@ -78,7 +78,7 @@ object APIManager {
                 signMap[it] = chain.request().url().queryParameter(it)
             }
             if(!bodyString.isNullOrEmpty()){
-                signMap["requestBody"] = bodyString!!
+                signMap["requestBody"] = bodyString
             }
             signMap["timestamp"] = System.currentTimeMillis().toString() + ""//当前时间
 

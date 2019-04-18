@@ -7,7 +7,7 @@ import java.security.MessageDigest
 
 /**
  * Created by wangming on 2018/11/15 .
- * Describe:
+ * Describe: 模糊处理
  */
 class BlurBitmapTranformation(var radius: Int): BitmapTransformation() {
 

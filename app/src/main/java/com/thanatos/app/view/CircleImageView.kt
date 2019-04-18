@@ -14,7 +14,7 @@ import com.thanatos.app.R
  * desc: 圆角的 ImageView
  */
 
-class CircleImageView(context: Context, attrs: AttributeSet) : android.support.v7.widget.AppCompatImageView(context, attrs) {
+class CircleImageView(context: Context, attrs: AttributeSet) : androidx.appcompat.widget.AppCompatImageView(context, attrs) {
 
     private val mType: Int
     private val mBorderColor: Int

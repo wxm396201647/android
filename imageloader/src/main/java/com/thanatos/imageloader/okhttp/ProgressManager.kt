@@ -16,17 +16,6 @@ class ProgressManager private constructor() {
         private val listeners = Collections.synchronizedList(ArrayList<WeakReference<OnProgressListener>>())
 
         fun getOkHttpClient(): OkHttpClient {
-            if (okHttpClient == null) {
-                okHttpClient = OkHttpClient.Builder()
-                        .addNetworkInterceptor { chain ->
-                            val request = chain.request()
-                            val response = chain.proceed(request)
-                            response.newBuilder()
-                                    .body(ProgressResponseBody(request.url().toString(), response.body()!!, LISTENER))
-                                    .build()
-                        }
-                        .build()
-            }
             return okHttpClient
         }
 

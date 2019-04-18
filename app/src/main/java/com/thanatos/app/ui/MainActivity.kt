@@ -1,8 +1,5 @@
 package com.thanatos.app.ui
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import android.view.View
 import com.beltaief.flowlayout.FlowLayout
 import com.thanatos.app.R
 import com.thanatos.app.base.BaseActivity

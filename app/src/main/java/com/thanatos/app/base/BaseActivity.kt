@@ -1,7 +1,7 @@
 package com.thanatos.app.base
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -89,14 +89,14 @@ abstract class BaseActivity<T : IBaseView, K : BasePresenter<T>> : AppCompatActi
      *显示进度弹窗
      */
     override fun showLoading() {
-        progressDialog?.show()
+        progressDialog.show()
     }
 
     /**
      * 进度弹窗消失
      */
     override fun dismissLoading() {
-        progressDialog?.dismiss()
+        progressDialog.dismiss()
     }
 
     override fun showCommonView() {
@@ -126,7 +126,7 @@ abstract class BaseActivity<T : IBaseView, K : BasePresenter<T>> : AppCompatActi
     override fun onDestroy() {
         super.onDestroy()
         mPresenter?.detachView()
-        progressDialog?.dismiss()
+        progressDialog.dismiss()
         if (isRegistEventBus()) EventBus.getDefault().unregister(this)
         // 收起输入框
         KeyboardUtils.hideSoftInput(this)
