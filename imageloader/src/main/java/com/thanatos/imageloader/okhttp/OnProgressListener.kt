@@ -2,10 +2,6 @@ package com.thanatos.imageloader.okhttp
 
 import com.bumptech.glide.load.engine.GlideException
 
-/**
- * Created by wangming on 2018/11/15 .
- * Describe:
- */
 interface OnProgressListener {
     /**
      *

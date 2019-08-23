@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.NonNull
 import com.beltaief.flowlayout.FlowLayout
 import com.blankj.utilcode.util.KeyboardUtils
 import com.thanatos.app.utils.EmptyLayoutEnum
 import com.thanatos.app.utils.StatusBarUtil
 import com.thanatos.app.view.CustomProgressDialog
-import io.reactivex.annotations.NonNull
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -19,7 +22,7 @@ import pub.devrel.easypermissions.EasyPermissions
 import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
 
-abstract class BaseActivity<T : IBaseView, K : BasePresenter<T>> : AppCompatActivity(), IBaseView, EasyPermissions.PermissionCallbacks {
+abstract class BaseActivity<T : IBaseView, K : BasePresenter<T>> : AppCompatActivity(), IBaseView, EasyPermissions.PermissionCallbacks, CoroutineScope by MainScope() {
     /**
      * BasePresenter<T>类型 K 用于attachView 、detachView 统一处理
      */
@@ -47,13 +50,15 @@ abstract class BaseActivity<T : IBaseView, K : BasePresenter<T>> : AppCompatActi
         initViewsAndEvents()
     }
 
-    fun statusBarDark(){
+    fun statusBarDark() {
         StatusBarUtil.darkMode(this)
     }
-    fun paddingStatusBar(view:View){
+
+    fun paddingStatusBar(view: View) {
         StatusBarUtil.setPaddingSmart(this, view)
 
     }
+
     /**
      * 获取BasePresenter<T>类型 子类返回实现
      * T 为IBaseView 类型
@@ -127,6 +132,7 @@ abstract class BaseActivity<T : IBaseView, K : BasePresenter<T>> : AppCompatActi
         super.onDestroy()
         mPresenter?.detachView()
         progressDialog.dismiss()
+        cancel()
         if (isRegistEventBus()) EventBus.getDefault().unregister(this)
         // 收起输入框
         KeyboardUtils.hideSoftInput(this)
@@ -136,8 +142,8 @@ abstract class BaseActivity<T : IBaseView, K : BasePresenter<T>> : AppCompatActi
     /**
      * 根据EmptyLayoutEnum 显示EmptyLayout
      */
-    open fun setEmptyByType(enumType: EmptyLayoutEnum){
-        when(enumType){
+    open fun setEmptyByType(enumType: EmptyLayoutEnum) {
+        when (enumType) {
             EmptyLayoutEnum.SHOW_CONTENT -> showCommonView()
             EmptyLayoutEnum.SHOW_NO_NET -> showNoNetView()
             EmptyLayoutEnum.SHOW_ERROR -> showErrorView()

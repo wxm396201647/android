@@ -20,10 +20,6 @@ import com.thanatos.imageloader.listener.ImageSize;
 import com.thanatos.imageloader.okhttp.OnGlideImageViewListener;
 import com.thanatos.imageloader.okhttp.OnProgressListener;
 
-
-/**
- * Created by shiming on 2016/10/26.
- */
 public class ImageLoader implements IImageLoaderClient {
     /**
      * volatile 关键字：我个人理解的是：使用volatile关键字的程序在并发时能够正确执行。

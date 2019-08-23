@@ -9,11 +9,6 @@ import android.widget.ImageView
 import android.widget.TextView
 
 @Suppress("UNCHECKED_CAST")
-/**
- * Created by xuhao on 2017/11/22.
- * desc:
- */
-
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     //用于缓存已找的界面

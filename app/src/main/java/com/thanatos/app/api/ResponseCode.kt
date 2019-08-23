@@ -16,8 +16,6 @@ object ResponseCode {
      */
     val SIGN_ERROR = 406
 
-
-
     val UPDATE_FORCE = 201
     val ACCESS_TOKEN_INVALID = 202
     val TICKET_UNAVALIBLE = 400000023//ticket无效的请求参数
@@ -26,4 +24,5 @@ object ResponseCode {
     val TOKEN_EMPTY = 400001008//TOKEN_EMPTY
     val LOGIN_DUPLICATE = 400001045//用户在其他设备，您已经被踢掉
 
+    val REQUEST_SUCCESS = 0;
 }

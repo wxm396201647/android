@@ -19,11 +19,6 @@ import com.thanatos.imageloader.okhttp.OnProgressListener;
 
 import java.io.File;
 
-
-/**
- * Created by shiming on 2016/10/26.
- */
-
 public interface IImageLoaderClient {
     public void init(Context context);
 

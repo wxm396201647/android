@@ -8,11 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.NonNull
 import com.beltaief.flowlayout.FlowLayout
 import com.thanatos.app.utils.EmptyLayoutEnum
 import com.thanatos.app.utils.StatusBarUtil
 import com.thanatos.app.view.CustomProgressDialog
-import io.reactivex.annotations.NonNull
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -22,7 +26,8 @@ import pub.devrel.easypermissions.EasyPermissions
 import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
 
-abstract class BaseFragment<T : IBaseView, K : BasePresenter<T>> : androidx.fragment.app.Fragment(), IBaseView, EasyPermissions.PermissionCallbacks {
+@ExperimentalCoroutinesApi
+abstract class BaseFragment<T : IBaseView, K : BasePresenter<T>> : androidx.fragment.app.Fragment(), IBaseView, EasyPermissions.PermissionCallbacks, CoroutineScope by MainScope() {
 
     /**
      * BasePresenter<T>类型 K 用于attachView 、detachView 统一处理
@@ -170,6 +175,7 @@ abstract class BaseFragment<T : IBaseView, K : BasePresenter<T>> : androidx.frag
         super.onDestroy()
         progressDialog.dismiss()
         mPresenter?.detachView()
+        cancel()
         mView = null
         if (isRegistEventBus()) EventBus.getDefault().unregister(this)
     }

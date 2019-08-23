@@ -10,11 +10,6 @@ import android.view.View
 import android.widget.EditText
 import com.thanatos.app.R
 
-/**
- * Created by xuhao on 2017/12/4.
- * desc:带删除按钮的EditText
- */
-
 class ClearEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null,
                                               defStyle: Int = android.R.attr.editTextStyle) : EditText(context, attrs, defStyle), View.OnFocusChangeListener, TextWatcher {
     //EditText右侧的删除按钮

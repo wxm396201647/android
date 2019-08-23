@@ -1,15 +1,13 @@
 package com.thanatos.app.api
 
 import com.blankj.utilcode.util.LogUtils
-import com.thanatos.app.base.BaseContext
-import io.reactivex.schedulers.Schedulers
-import okhttp3.Headers
+import okhttp3.Headers.Companion.toHeaders
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import okio.Buffer
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.io.EOFException
@@ -30,7 +28,6 @@ object APIManager {
                             .baseUrl(APIAddressConstants.baseUrl)
                             .client(okHttpClient)
                             .addConverterFactory(ScalarsConverterFactory.create())
-                            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                             .addConverterFactory(GsonConverterFactory.create())
                             .build()
                 }
@@ -52,7 +49,12 @@ object APIManager {
      * 打印retrofit日志
      */
     private fun getLogInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message -> LogUtils.e("RetrofitLog", "retrofitBack = $message") }).setLevel(HttpLoggingInterceptor.Level.BODY)
+        val httpLoggingInterceptor = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+            override fun log(message: String) {
+                LogUtils.e("RetrofitLog", "retrofitBack = $message")
+            }
+        })
+        return httpLoggingInterceptor.apply { httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY }
     }
 
     /**
@@ -62,29 +64,31 @@ object APIManager {
      *
      */
     private fun getCommonHeaderInterceptor(): Interceptor {
-        return Interceptor { chain ->
-            val url = chain.request().url().encodedPath().toString()
+        return object : Interceptor {
+            override fun intercept(chain: Interceptor.Chain): Response {
+                val url = chain.request().url.encodedPath
 
-            var bodyString :String?= null
-            //增加拦截器，用以加入公用头部
-            val builder = chain.request().newBuilder()
-            bodyString = getBodyString(chain, bodyString)
+                var bodyString: String? = null
+                //增加拦截器，用以加入公用头部
+                val builder = chain.request().newBuilder()
+                bodyString = getBodyString(chain, bodyString)
 
-            val commonHeaders = CommonHeaders.getCommonHeaders()
+                val commonHeaders = CommonHeaders.getCommonHeaders()
 
-            val signMap = HashMap<String, String?>()
+                val signMap = HashMap<String, String>()
 
-            chain.request().url().queryParameterNames().forEach { it ->
-                signMap[it] = chain.request().url().queryParameter(it)
-            }
-            if(!bodyString.isNullOrEmpty()){
-                signMap["requestBody"] = bodyString
-            }
-            signMap["timestamp"] = System.currentTimeMillis().toString() + ""//当前时间
+                chain.request().url.queryParameterNames.forEach {
+                    val str = chain.request().url.queryParameter(it);
+                    signMap[it] = if (str.isNullOrEmpty()) "" else str
+                }
+                if (!bodyString.isNullOrEmpty()) {
+                    signMap["requestBody"] = bodyString
+                }
+                signMap["timestamp"] = System.currentTimeMillis().toString() + ""//当前时间
 
-            if(!url.isEmpty()){
-                signMap["requestPathUrl"] = url
-            }
+                if (!url.isEmpty()) {
+                    signMap["requestPathUrl"] = url
+                }
 //            val userInfo = BaseContext.instance. getUserInfo()
 //            if (userInfo?.tokenid != null) {
 //                signMap["tokenId"] = userInfo.tokenid
@@ -92,36 +96,37 @@ object APIManager {
 //            if(null != BaseContext.instance.secretKey){
 //                signMap["gid"] =  BaseContext.instance.secretKey?.gid!!//加密串
 //            }
-            signMap["appid"] = APIAddressConstants.APP_KEY
+                signMap["appid"] = APIAddressConstants.APP_KEY
 
-            try {
-                chain.request().url().queryParameterNames().forEach { it ->
-                    signMap.remove(it)
+                try {
+                    chain.request().url.queryParameterNames.forEach {
+                        signMap.remove(it)
+                    }
+
+                    signMap.remove("requestPathUrl")
+                } catch (e: Exception) {
+                    LogUtils.e(e.message)
                 }
 
-                signMap.remove("requestPathUrl")
-            }catch (e:Exception){
-                LogUtils.e(e.message)
+                signMap.putAll(commonHeaders)
+
+                builder.headers(signMap.toHeaders())
+                val request = builder.build()
+                return chain.proceed(request)
             }
-
-            signMap.putAll(commonHeaders)
-
-            builder.headers(Headers.of(signMap))
-            val request = builder.build()
-            chain.proceed(request)
         }
     }
 
     private fun getBodyString(chain: Interceptor.Chain, bodyString: String?): String? {
         var bodyString1 = bodyString
-        if (null != chain.request().body()) {
+        chain.request().body?.let {
             val buffer = Buffer()
-            chain.request().body()!!.writeTo(buffer)
+            it.writeTo(buffer)
 
             var charset = Charset.forName("UTF-8")
-            val contentType = chain.request().body()!!.contentType()
-            if (contentType != null) {
-                charset = contentType.charset(Charset.forName("UTF-8"))
+            val contentType = it.contentType()
+            contentType?.let { it1 ->
+                charset = it1.charset(Charset.forName("UTF-8"))
             }
             if (isPlaintext(buffer)) {
                 bodyString1 = buffer.readString(charset)
@@ -134,7 +139,7 @@ object APIManager {
     internal fun isPlaintext(buffer: Buffer): Boolean {
         try {
             val prefix = Buffer()
-            val byteCount = if (buffer.size() < 64) buffer.size() else 64
+            val byteCount = if (buffer.size < 64) buffer.size else 64
             buffer.copyTo(prefix, 0, byteCount)
             for (i in 0..15) {
                 if (prefix.exhausted()) {

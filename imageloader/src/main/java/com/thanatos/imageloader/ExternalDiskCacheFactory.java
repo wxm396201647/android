@@ -6,8 +6,6 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.load.engine.cache.DiskCache;
 
 /**
- * author： Created by shiming on 2018/4/20 15:13
- * mailbox：lamshiming@sina.com
  磁盘缓存
  Glide 使用 DiskLruCacheWrapper 作为默认的 磁盘缓存 。
  DiskLruCacheWrapper 是一个使用 LRU 算法的固定大小的磁盘缓存。默认磁盘大小为 250 MB ，

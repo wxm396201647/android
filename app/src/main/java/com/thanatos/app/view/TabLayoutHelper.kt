@@ -7,10 +7,6 @@ import android.widget.LinearLayout
 import com.thanatos.app.extension.dip2px
 import java.lang.reflect.Field
 
-/**
- * Created by xuhao on 2017/12/7.
- * desc:
- */
 object TabLayoutHelper{
 
     @SuppressLint("ObsoleteSdkInt")

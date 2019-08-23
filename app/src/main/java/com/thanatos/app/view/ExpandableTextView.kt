@@ -16,11 +16,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.thanatos.app.R
 
-
-/**
- * 可折叠，展开的TextView
- * Created by xuhao on 2017/11/27
- */
 class ExpandableTextView : LinearLayout, View.OnClickListener {
 
     private var mTextView: TextView? = null

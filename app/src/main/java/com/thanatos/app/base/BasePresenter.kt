@@ -1,16 +1,15 @@
 package com.thanatos.app.base
 
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-
-
+import kotlinx.coroutines.*
 
 open class BasePresenter<T : IBaseView> : IPresenter<T> {
 
     var mRootView: T? = null
         private set
 
-    open var compositeDisposable = CompositeDisposable()
+    val scope: CoroutineScope by lazy {
+        CoroutineScope(Dispatchers.Main + Job())
+    }
 
 
     override fun attachView(mRootView: T) {
@@ -19,12 +18,7 @@ open class BasePresenter<T : IBaseView> : IPresenter<T> {
 
     override fun detachView() {
         mRootView = null
-
-         //保证activity结束时取消所有正在执行的订阅
-        if (!compositeDisposable.isDisposed) {
-            compositeDisposable.clear()
-        }
-
+        scope.cancel()
     }
 
     private val isViewAttached: Boolean
@@ -34,13 +28,9 @@ open class BasePresenter<T : IBaseView> : IPresenter<T> {
         if (!isViewAttached) throw MvpViewNotAttachedException()
     }
 
-    fun addSubscription(disposable: Disposable) {
-        compositeDisposable.add(disposable)
-    }
-
     private class MvpViewNotAttachedException internal constructor() : RuntimeException("Please call IPresenter.attachView(IBaseView) before" + " requesting data to the IPresenter")
 
-    fun toastMsg(detail: String?, message: String?): String {
-        return if (detail.isNullOrEmpty()) message!! else detail!!
+    fun toastMsg(detail: String?, message: String?) : String {
+        return if (detail.isNullOrEmpty()) message!! else detail
     }
 }

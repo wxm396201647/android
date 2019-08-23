@@ -5,10 +5,6 @@ import okhttp3.OkHttpClient
 import java.lang.ref.WeakReference
 import java.util.*
 
-/**
- * Created by wangming on 2018/11/15 .
- * Describe:
- */
 class ProgressManager private constructor() {
 
     companion object {

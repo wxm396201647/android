@@ -9,11 +9,6 @@ import android.util.AttributeSet
 import com.thanatos.app.R
 
 @Suppress("IMPLICIT_CAST_TO_ANY")
-/**
- * Created by xuhao on 2017/12/4.
- * desc: 圆角的 ImageView
- */
-
 class CircleImageView(context: Context, attrs: AttributeSet) : androidx.appcompat.widget.AppCompatImageView(context, attrs) {
 
     private val mType: Int

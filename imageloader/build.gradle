@@ -2,11 +2,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
     }
@@ -27,9 +27,9 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
     //解决Glide找不到Android声明库问题
-    annotationProcessor 'androidx.annotation:annotation:1.0.2'
+    annotationProcessor 'androidx.annotation:annotation:1.1.0'
 
-    implementation "com.github.bumptech.glide:okhttp3-integration:4.7.1"
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.9.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {

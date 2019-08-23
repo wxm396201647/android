@@ -5,10 +5,6 @@ import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation
 import java.security.MessageDigest
 
-/**
- * Created by wangming on 2018/11/15 .
- * Describe:
- */
 class RoundBitmapTranformation(val radius: Int) : BitmapTransformation() {
     override fun transform(pool: BitmapPool, toTransform: Bitmap, outWidth: Int, outHeight: Int): Bitmap {
         return roundCrop(pool, toTransform)

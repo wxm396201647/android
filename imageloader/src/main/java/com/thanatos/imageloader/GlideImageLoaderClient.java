@@ -44,8 +44,6 @@ import com.thanatos.imageloader.tranform.RoundBitmapTranformation;
 
 
 /**
- * Created by shiming on 2016/10/26.
- * des:
  * with(Context context). 使用Application上下文，Glide请求将不受Activity/Fragment生命周期控制。
  * with(Activity activity).使用Activity作为上下文，Glide的请求会受到Activity生命周期控制。
  * with(FragmentActivity activity).Glide的请求会受到FragmentActivity生命周期控制。

@@ -5,10 +5,6 @@ import okhttp3.ResponseBody
 import okio.*
 import java.io.IOException
 
-/**
- * Created by wangming on 2018/11/15 .
- * Describe:
- */
 class ProgressResponseBody(val imageUrl: String, val responseBody: ResponseBody, val progressListener: OnProgressListener?) : ResponseBody() {
     private lateinit var bufferedSource: BufferedSource
 
