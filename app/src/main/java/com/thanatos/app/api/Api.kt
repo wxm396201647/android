@@ -6,6 +6,7 @@ import com.thanatos.app.mvp.model.bean.User
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Url
 
 interface Api {
 
@@ -14,5 +15,8 @@ interface Api {
 
     @GET(APIAddressConstants.userLogin)
     fun login(): Call<Response<BaseBean<User>>>
+
+    @GET()
+    fun test1(@Url url: String): Call<String>
 
 }

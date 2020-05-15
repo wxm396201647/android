@@ -20,7 +20,6 @@ android {
             keyPassword '123456'
             storeFile file('thanatos.keystore')
             storePassword '123456'
-            v2SigningEnabled false
         }
     }
     //配置so文件
